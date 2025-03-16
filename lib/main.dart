@@ -43,7 +43,10 @@ class _MyAppState extends State<MyApp> {
       theme: themeData,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Cylium'),
+          title: Text(
+            'Cylium',
+            style: TextStyle(fontFamily: 'VT323', fontSize: 48),
+          ),
           actions: [
             SizedBox(
               width: 250,
