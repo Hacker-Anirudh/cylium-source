@@ -14,59 +14,27 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool isDark = true;
+  int _selectedIndex = 0;
 
-  late TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  final List<Widget> _screens = [
+    HomeScreen(),
+    BoekenScreen(),
+    SpelletjesScreen(),
+    SpeelgoedScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = ThemeData(
-      useMaterial3: true,
-      brightness: isDark ? Brightness.dark : Brightness.light,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: Colors.lightBlueAccent,
-        brightness: isDark ? Brightness.dark : Brightness.light,
-      ),
-    );
     return MaterialApp(
-      theme: themeData,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Cylium',
-            style: TextStyle(fontFamily: 'VT323', fontSize: 48),
-          ),
-          actions: [
-            SizedBox(
-              width: 250,
-              child: TextField(
-                controller: _controller,
-                onSubmitted: (String value) {
-                  _openlink('https://google.com/search?q=$value');
-                },
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(64.0),
-                  ),
-                  hintText: 'Tik een zoekterm in',
-                  labelText: 'Zoeken met Google',
-                ),
-              ),
-            ),
-          ],
+      theme: ThemeData(
+        useMaterial3: true,
+        brightness: isDark ? Brightness.dark : Brightness.light,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.lightBlueAccent,
+          brightness: isDark ? Brightness.dark : Brightness.light,
         ),
+      ),
+      home: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           child: Tooltip(
@@ -83,193 +51,359 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-        body: Column(
+        body: Row(
           children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.7),
-                            child: Text(
-                              'Cylium is een website opgericht in 2025, gemaakt om speelgoed en boeken voor verschillende leeftijdsgroepen te verkopen.',
-                              style: TextStyle(fontSize: 22),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(36.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text(
-                                'Boeken',
-                                style: TextStyle(fontSize: 42),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text(
-                                'Spelletjes',
-                                style: TextStyle(fontSize: 42),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text(
-                                'Speelgoed',
-                                style: TextStyle(fontSize: 42),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(7.7),
-                            child: Text(
-                              'Interessante links',
-                              style: TextStyle(fontSize: 22),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(36.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _openlink('https://nl.wikipedia.org');
-                              },
-                              child: Text(
-                                'Wikipedia',
-                                style: TextStyle(fontSize: 32),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _openlink(
-                                  'https://10fastfingers.com/typing-test/dutch',
-                                );
-                              },
-                              child: Text(
-                                'Typtest',
-                                style: TextStyle(fontSize: 32),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(7.7),
-                            child: Text(
-                              'Google dingen',
-                              style: TextStyle(fontSize: 22),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(36.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _openlink('https://classroom.google.com');
-                              },
-                              child: Text(
-                                'Google Classroom',
-                                style: TextStyle(fontSize: 28),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _openlink('https://docs.google.com/document');
-                              },
-                              child: Text(
-                                'Google Docs',
-                                style: TextStyle(fontSize: 28),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _openlink(
-                                  'https://docs.google.com/presentation',
-                                );
-                              },
-                              child: Text(
-                                'Google Slides',
-                                style: TextStyle(fontSize: 28),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _openlink(
-                                  'https://docs.google.com/spreadsheets',
-                                );
-                              },
-                              child: Text(
-                                'Google Sheets',
-                                style: TextStyle(fontSize: 28),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+            NavigationRail(
+              selectedIndex: _selectedIndex,
+              onDestinationSelected: (int index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+              labelType: NavigationRailLabelType.all,
+              destinations: const [
+                NavigationRailDestination(
+                  icon: Icon(Icons.home),
+                  label: Text('Start'),
                 ),
-              ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.book),
+                  label: Text('Boeken'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.videogame_asset),
+                  label: Text('Spelletjes'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(Icons.toys),
+                  label: Text('Speelgoed'),
+                ),
+              ],
             ),
-            Footer(),
+            Expanded(child: _screens[_selectedIndex]),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// Home Screen
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Cylium',
+          style: TextStyle(fontFamily: 'VT323', fontSize: 48),
+        ),
+        actions: [
+          SizedBox(
+            width: 250,
+            child: TextField(
+              onSubmitted: (String value) {
+                _openlink('https://google.com/search?q=$value');
+              },
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(64.0),
+                ),
+                hintText: 'Tik een zoekterm in',
+                labelText: 'Zoeken met Google',
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(3.7),
+                          child: Text(
+                            'Cylium is een website opgericht in 2025, gemaakt om speelgoed en boeken voor verschillende leeftijdsgroepen te verkopen.',
+                            style: TextStyle(fontSize: 22),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(7.7),
+                          child: Text(
+                            'Interessante links',
+                            style: TextStyle(fontSize: 22),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(36.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _openlink('https://nl.wikipedia.org');
+                            },
+                            child: Text(
+                              'Wikipedia',
+                              style: TextStyle(fontSize: 32),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _openlink(
+                                'https://10fastfingers.com/typing-test/dutch',
+                              );
+                            },
+                            child: Text(
+                              'Typtest',
+                              style: TextStyle(fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(7.7),
+                          child: Text(
+                            'Google dingen',
+                            style: TextStyle(fontSize: 22),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(36.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _openlink('https://classroom.google.com');
+                            },
+                            child: Text(
+                              'Google Classroom',
+                              style: TextStyle(fontSize: 28),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _openlink('https://docs.google.com/document');
+                            },
+                            child: Text(
+                              'Google Docs',
+                              style: TextStyle(fontSize: 28),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _openlink('https://docs.google.com/presentation');
+                            },
+                            child: Text(
+                              'Google Slides',
+                              style: TextStyle(fontSize: 28),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _openlink('https://docs.google.com/spreadsheets');
+                            },
+                            child: Text(
+                              'Google Sheets',
+                              style: TextStyle(fontSize: 28),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Footer(),
+        ],
+      ),
+    );
+  }
+}
+
+// Placeholder Screens
+class BoekenScreen extends StatelessWidget {
+  const BoekenScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Boeken',
+          style: TextStyle(fontFamily: 'VT323', fontSize: 48),
+        ),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(3.7),
+                          child: Text(
+                            'Cylium biedt een groot assortiment boeken en strips aan.',
+                            style: TextStyle(fontSize: 22),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Image.asset('assets/images/img1.jpg'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Image.asset('assets/images/img2.jpg'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Image.asset('assets/images/img3.jpg'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Footer(),
+        ],
+      ),
+    );
+  }
+}
+
+class SpelletjesScreen extends StatelessWidget {
+  const SpelletjesScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Spelletjes',
+          style: TextStyle(fontFamily: 'VT323', fontSize: 48),
+        ),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.7),
+                        child: Text(
+                          'Cylium biedt een groot assortiment spelletjes aan. Binnenkort beschikbaar!',
+                          style: TextStyle(fontSize: 22),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Footer(),
+        ],
+      ),
+    );
+  }
+}
+
+class SpeelgoedScreen extends StatelessWidget {
+  const SpeelgoedScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Speelgoed',
+          style: TextStyle(fontFamily: 'VT323', fontSize: 48),
+        ),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Center(
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(3.7),
+                          child: Text(
+                            'Cylium biedt een groot assortiment speelgoed aan. Binnenkort beschikbaar!',
+                            style: TextStyle(fontSize: 22),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Footer(),
+        ],
       ),
     );
   }
@@ -282,7 +416,7 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      color: Colors.black87, // Background color
+      color: Colors.black87,
       child: Center(
         child: Text(
           '© 2020-2025 Anirudh Menon. Alle rechten voorbehouden.',
