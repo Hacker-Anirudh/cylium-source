@@ -85,162 +85,188 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(3.7),
-                    child: Text(
-                      'Cylium is een website opgericht in 2025, gemaakt om speelgoed en boeken voor verschillende leeftijdsgroepen te verkopen.',
-                      style: TextStyle(fontSize: 22),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.7),
+                            child: Text(
+                              'Cylium is een website opgericht in 2025, gemaakt om speelgoed en boeken voor verschillende leeftijdsgroepen te verkopen.',
+                              style: TextStyle(fontSize: 22),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.all(36.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Boeken',
+                                style: TextStyle(fontSize: 42),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Spelletjes',
+                                style: TextStyle(fontSize: 42),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Speelgoed',
+                                style: TextStyle(fontSize: 42),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(7.7),
+                            child: Text(
+                              'Interessante links',
+                              style: TextStyle(fontSize: 22),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(36.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _openlink('https://nl.wikipedia.org');
+                              },
+                              child: Text(
+                                'Wikipedia',
+                                style: TextStyle(fontSize: 32),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _openlink(
+                                  'https://10fastfingers.com/typing-test/dutch',
+                                );
+                              },
+                              child: Text(
+                                'Typtest',
+                                style: TextStyle(fontSize: 32),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(7.7),
+                            child: Text(
+                              'Google dingen',
+                              style: TextStyle(fontSize: 22),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(36.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _openlink('https://classroom.google.com');
+                              },
+                              child: Text(
+                                'Google Classroom',
+                                style: TextStyle(fontSize: 28),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _openlink('https://docs.google.com/document');
+                              },
+                              child: Text(
+                                'Google Docs',
+                                style: TextStyle(fontSize: 28),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _openlink(
+                                  'https://docs.google.com/presentation',
+                                );
+                              },
+                              child: Text(
+                                'Google Slides',
+                                style: TextStyle(fontSize: 28),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _openlink(
+                                  'https://docs.google.com/spreadsheets',
+                                );
+                              },
+                              child: Text(
+                                'Google Sheets',
+                                style: TextStyle(fontSize: 28),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Boeken', style: TextStyle(fontSize: 42)),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Spelletjes', style: TextStyle(fontSize: 42)),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Speelgoed', style: TextStyle(fontSize: 42)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(7.7),
-                    child: Text(
-                      'Interessante links',
-                      style: TextStyle(fontSize: 22),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _openlink('https://nl.wikipedia.org');
-                      },
-                      child: Text('Wikipedia', style: TextStyle(fontSize: 32)),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _openlink(
-                          'https://10fastfingers.com/typing-test/dutch',
-                        );
-                      },
-                      child: Text('Typtest', style: TextStyle(fontSize: 32)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(7.7),
-                    child: Text(
-                      'Google dingen',
-                      style: TextStyle(fontSize: 22),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _openlink('https://classroom.google.com');
-                      },
-                      child: Text(
-                        'Google Classroom',
-                        style: TextStyle(fontSize: 28),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _openlink('https://docs.google.com/document');
-                      },
-                      child: Text(
-                        'Google Docs',
-                        style: TextStyle(fontSize: 28),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _openlink('https://docs.google.com/presentation');
-                      },
-                      child: Text(
-                        'Google Slides',
-                        style: TextStyle(fontSize: 28),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _openlink('https://docs.google.com/spreadsheets');
-                      },
-                      child: Text(
-                        'Google Sheets',
-                        style: TextStyle(fontSize: 28),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(child: Container()),
             Footer(),
           ],
         ),
@@ -259,7 +285,7 @@ class Footer extends StatelessWidget {
       color: Colors.black87, // Background color
       child: Center(
         child: Text(
-          '© 2020-2025 Anirudh Menon. Alle rechten voorbehounden.',
+          '© 2020-2025 Anirudh Menon. Alle rechten voorbehouden.',
           style: TextStyle(color: Colors.white, fontSize: 14),
         ),
       ),
