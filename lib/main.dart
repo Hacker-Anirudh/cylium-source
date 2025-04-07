@@ -1,3 +1,5 @@
+// Code quality here is terrible indeed, but I can't be arsed to fix it for such a useless project.
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -39,7 +41,7 @@ class _MyAppState extends State<MyApp> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           child: Tooltip(
-            message: 'Change brightness mode',
+            message: 'Verander van kleurenmodus',
             child: IconButton(
               isSelected: isDark,
               onPressed: () {
@@ -352,11 +354,25 @@ class SpelletjesScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(3.7),
                         child: Text(
-                          'Cylium biedt een groot assortiment spelletjes aan. Binnenkort beschikbaar!',
+                          'Cylium biedt een groot assortiment spelletjes aan.',
                           style: TextStyle(fontSize: 22),
                         ),
                       ),
                     ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      _openlink('https://hacker-anirudh.github.io/DuckLife4/');
+                    },
+                    icon: Image.asset('assets/images/img4.png'),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      _openlink(
+                        'https://hacker-anirudh.github.io/Snow-Rider3D/',
+                      );
+                    },
+                    icon: Image.asset('assets/images/img5.png'),
                   ),
                 ],
               ),
@@ -545,6 +561,7 @@ class PixelArtScreenState extends State<PixelArtScreen> {
               ),
             ),
           ),
+          Footer(),
         ],
       ),
     );
